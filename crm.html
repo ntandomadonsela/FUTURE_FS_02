@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Mini CRM - Nesma Holdings</title>
+<style>
+body {
+  font-family: Arial;
+  background: #f5f5f5;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+input, select {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+}
+
+button {
+  padding: 10px;
+  background: #b89a5a;
+  border: none;
+  color: white;
+  cursor: pointer;
+  margin-top: 10px;
+  width: 100%;
+}
+
+table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  background: #b89a5a;
+  color: white;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Client Lead Management System (CRM)</h1>
+
+<div class="container">
+
+  <input id="name" placeholder="Client Name">
+  <input id="email" placeholder="Client Email">
+
+  <select id="status">
+    <option>New</option>
+    <option>Contacted</option>
+    <option>Converted</option>
+  </select>
+
+  <button onclick="addLead()">Add Lead</button>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody id="crmTable"></tbody>
+  </table>
+
+</div>
+
+<script>
+function addLead() {
+  let name = document.getElementById("name").value;
+  let email = document.getElementById("email").value;
+  let status = document.getElementById("status").value;
+
+  if (!name || !email) {
+    alert("Fill in all fields");
+    return;
+  }
+
+  let table = document.getElementById("crmTable");
+
+  let row = table.insertRow();
+  row.innerHTML = `
+    <td>${name}</td>
+    <td>${email}</td>
+    <td>${status}</td>
+  `;
+
+  document.getElementById("name").value = "";
+  document.getElementById("email").value = "";
+}
+</script>
+
+</body>
+</html>
